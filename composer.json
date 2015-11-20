@@ -1,0 +1,27 @@
+{
+	"name": "posey/nasr",
+	"type": "phpbb-extension",
+	"description": "Normal and Special Ranks",
+	"homepage": "http://www.godfathertalks.com",
+	"version": "1.0",
+	"time": "2015-11-11",
+	"license": "GPL-2.0",
+	"authors": [{
+			"name": "Gijs Martens",
+			"email": "admin@godfathertalks.com",
+			"homepage": "http://www.godfathertalks.com",
+			"role": "Lead Developer"
+		}],
+	"require": {
+		"php": ">=5.3.3"
+	},
+	"require-dev": {
+		"phpbb/epv": "dev-master"
+	},
+	"extra": {
+		"display-name": "Normal and Special Ranks",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.1.0-RC2,<3.2.*@dev"
+		}
+	}
+}

@@ -1,22 +1,11 @@
 services:
-    posey.nasr.extra_rank:
-        class: posey\nasr\core\extra_rank
-        arguments:
-            - @config
-            - @dbal.conn
-            - @template
-            - @user
-            - %core.root_path%
-
     posey.nasr.event:
         class: posey\nasr\event\listener
         arguments:
+            - @template
             - @config
             - @dbal.conn
-            - @template
-            - @user
-            - @service_container
-            - @posey.nasr.extra_rank
             - %core.root_path%
+            - %core.php_ext%
         tags:
             - { name: event.listener }

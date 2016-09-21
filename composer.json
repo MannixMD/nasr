@@ -3,17 +3,26 @@
 	"type": "phpbb-extension",
 	"description": "Normal and Special Ranks",
 	"homepage": "http://www.godfathertalks.com",
-	"version": "1.0",
-	"time": "2015-11-11",
+	"version": "2.0.0",
+	"time": "2016-09-21",
 	"license": "GPL-2.0",
-	"authors": [{
+	"authors": [
+		{
 			"name": "Gijs Martens",
 			"email": "admin@godfathertalks.com",
 			"homepage": "http://www.godfathertalks.com",
+			"role": "Original Developer"
+		},
+		{
+			"name": "kasimi",
+			"email": "mail@kasimi.net",
+			"homepage": "https://kasimi.net",
 			"role": "Lead Developer"
-		}],
+		}
+	],
 	"require": {
-		"php": ">=5.3.3"
+		"php": ">=5.3.3",
+		"phpbb/phpbb": ">=3.1.0-RC2,<3.3.*@dev"
 	},
 	"require-dev": {
 		"phpbb/epv": "dev-master"
@@ -21,7 +30,7 @@
 	"extra": {
 		"display-name": "Normal and Special Ranks",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.1.0-RC2,<3.2.*@dev"
+			"phpbb/phpbb": ">=3.1.0-RC2,<3.3.*@dev"
 		}
 	}
 }

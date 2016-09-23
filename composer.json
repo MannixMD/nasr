@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "Normal and Special Ranks",
 	"homepage": "http://www.godfathertalks.com",
-	"version": "2.0.0",
-	"time": "2016-09-21",
+	"version": "2.0.1",
+	"time": "2016-09-23",
 	"license": "GPL-2.0",
 	"authors": [
 		{

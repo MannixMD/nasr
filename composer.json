@@ -22,7 +22,7 @@
 	],
 	"require": {
 		"php": ">=5.3.3",
-		"phpbb/phpbb": ">=3.1.0-RC2,<3.3.*@dev"
+		"phpbb/phpbb": ">=3.1.0-RC2,<3.3@dev"
 	},
 	"require-dev": {
 		"phpbb/epv": "dev-master"
@@ -30,7 +30,7 @@
 	"extra": {
 		"display-name": "Normal and Special Ranks",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.1.0-RC2,<3.3.*@dev"
+			"phpbb/phpbb": ">=3.1.0-RC2,<3.3@dev"
 		}
 	}
 }

@@ -5,18 +5,18 @@
  * posey: Normal and Special Ranks (nasr)
  * phpBB3.1 Extension Package
  * @copyright (c) 2015 posey [ www.godfathertalks.com ]
- * @copyright (c) 2016 kasimi [ mail@kasimi.net ]
+ * @copyright (c) 2016 kasimi [ https://kasimi.net ]
  * @license GNU General Public License v2 [ http://opensource.org/licenses/gpl-2.0.php ]
  *
  */
 
 namespace posey\nasr\event;
 
-use Symfony\Component\EventDispatcher\Event;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use phpbb\template\template;
 use phpbb\config\config;
 use phpbb\db\driver\driver_interface;
+use phpbb\event\data;
+use phpbb\template\template;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Event Listener
@@ -66,7 +66,7 @@ class listener implements EventSubscriberInterface
 		$this->php_ext		= $php_ext;
 	}
 
-	static public function getSubscribedEvents()
+	public static function getSubscribedEvents()
 	{
 		return [
 			'core.memberlist_view_profile'		=> 'viewprofile',
@@ -77,7 +77,7 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	 * @param Event $event
+	 * @param data $event
 	 */
 	public function viewprofile($event)
 	{
@@ -88,7 +88,7 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	 * @param Event $event
+	 * @param data $event
 	 */
 	public function viewtopic_fetch($event)
 	{
@@ -105,7 +105,7 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	 * @param Event $event
+	 * @param data $event
 	 */
 	public function viewtopic_assign($event)
 	{
@@ -115,7 +115,7 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	 * @param Event $event
+	 * @param data $event
 	 */
 	public function viewpm($event)
 	{
@@ -180,8 +180,6 @@ class listener implements EventSubscriberInterface
 	 */
 	protected function get_users_special_ranks($user_ids)
 	{
-		$user_special_ranks = [];
-
 		$sql_array = [
 			'SELECT'	=> 'u.user_id, r.rank_special',
 			'FROM'		=> [USERS_TABLE => 'u'],
@@ -196,11 +194,15 @@ class listener implements EventSubscriberInterface
 
 		$sql = $this->db->sql_build_query('SELECT', $sql_array);
 		$result = $this->db->sql_query($sql);
-		while ($row = $this->db->sql_fetchrow($result))
+		$rows = $this->db->sql_fetchrowset($result);
+		$this->db->sql_freeresult($result);
+
+		$user_special_ranks = [];
+
+		foreach ($rows as $row)
 		{
 			$user_special_ranks[(int) $row['user_id']] = (bool) $row['rank_special'];
 		}
-		$this->db->sql_freeresult($result);
 
 		return $user_special_ranks;
 	}

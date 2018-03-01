@@ -1,7 +1,7 @@
-<!-- IF EXTRA_RANK_TITLE or EXTRA_RANK_IMG -->
+{% if EXTRA_RANK_TITLE or EXTRA_RANK_IMG %}
 	<dd class="profile-rank">
-		{EXTRA_RANK_TITLE}
-		<!-- IF EXTRA_RANK_TITLE and EXTRA_RANK_IMG --><br /><!-- ENDIF -->
-		{EXTRA_RANK_IMG}
+		{{ EXTRA_RANK_TITLE }}
+		{% if EXTRA_RANK_TITLE and EXTRA_RANK_IMG %}<br />{% endif %}
+		{{ EXTRA_RANK_IMG }}
 	</dd>
-<!-- ENDIF -->
+{% endif %}

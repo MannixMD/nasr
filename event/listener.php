@@ -68,12 +68,12 @@ class listener implements EventSubscriberInterface
 
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.memberlist_view_profile'		=> 'viewprofile',
 			'core.viewtopic_modify_post_data'	=> 'viewtopic_fetch',
 			'core.viewtopic_modify_post_row'	=> 'viewtopic_assign',
 			'core.ucp_pm_view_messsage'			=> 'viewpm',
-		);
+		];
 	}
 
 	/**
@@ -92,7 +92,7 @@ class listener implements EventSubscriberInterface
 	 */
 	public function viewtopic_fetch($event)
 	{
-		$user_posts = array();
+		$user_posts = [];
 		$user_cache = $event['user_cache'];
 
 		foreach ($event['rowset'] as $post_row)
@@ -134,9 +134,9 @@ class listener implements EventSubscriberInterface
 	 */
 	protected function get_extra_rank_template_data($user_id, $user_posts)
 	{
-		$template_data = $this->get_extra_ranks_template_data(array(
+		$template_data = $this->get_extra_ranks_template_data([
 			$user_id => $user_posts,
-		));
+		]);
 
 		return $template_data[$user_id];
 	}
@@ -154,19 +154,19 @@ class listener implements EventSubscriberInterface
 			include($this->root_path . 'includes/functions_display.' . $this->php_ext);
 		}
 
-		$template_data = array();
+		$template_data = [];
 
 		$user_special_ranks = $this->get_users_special_ranks(array_keys($user_posts));
 
 		foreach ($user_special_ranks as $user_id => $has_special_rank)
 		{
-			$user_rank_data = phpbb_get_user_rank(array(), $has_special_rank && $user_posts[$user_id] ? $user_posts[$user_id] : false);
+			$user_rank_data = phpbb_get_user_rank([], $has_special_rank && $user_posts[$user_id] ? $user_posts[$user_id] : false);
 
-			$template_data[$user_id] = array(
+			$template_data[$user_id] = [
 				'EXTRA_RANK_TITLE'	 => $user_rank_data['title'],
 				'EXTRA_RANK_IMG'	 => $user_rank_data['img'],
 				'EXTRA_RANK_IMG_SRC' => $user_rank_data['img_src'],
-			);
+			];
 		}
 
 		return $template_data;
@@ -180,19 +180,19 @@ class listener implements EventSubscriberInterface
 	 */
 	protected function get_users_special_ranks($user_ids)
 	{
-		$user_special_ranks = array();
+		$user_special_ranks = [];
 
-		$sql_array = array(
+		$sql_array = [
 			'SELECT'	=> 'u.user_id, r.rank_special',
-			'FROM'		=> array(USERS_TABLE => 'u'),
-			'LEFT_JOIN' => array(
-				array(
-					'FROM'  => array(RANKS_TABLE => 'r'),
+			'FROM'		=> [USERS_TABLE => 'u'],
+			'LEFT_JOIN' => [
+				[
+					'FROM'  => [RANKS_TABLE => 'r'],
 					'ON'    => 'r.rank_id = u.user_rank',
-				),
-			),
+				],
+			],
 			'WHERE'		=> $this->db->sql_in_set('u.user_id', array_map('intval', $user_ids)),
-		);
+		];
 
 		$sql = $this->db->sql_build_query('SELECT', $sql_array);
 		$result = $this->db->sql_query($sql);

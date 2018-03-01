@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "Normal and Special Ranks",
 	"homepage": "http://www.godfathertalks.com",
-	"version": "2.0.1",
-	"time": "2016-09-23",
+	"version": "2.1.0",
+	"time": "2018-03-01",
 	"license": "GPL-2.0",
 	"authors": [
 		{
@@ -21,8 +21,7 @@
 		}
 	],
 	"require": {
-		"php": ">=5.3.3",
-		"phpbb/phpbb": ">=3.1.0-RC2,<3.3@dev"
+		"php": ">=5.4.0"
 	},
 	"require-dev": {
 		"phpbb/epv": "dev-master"
@@ -30,7 +29,7 @@
 	"extra": {
 		"display-name": "Normal and Special Ranks",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.1.0-RC2,<3.3@dev"
+			"phpbb/phpbb": ">=3.2.0"
 		}
 	}
 }

@@ -1,4 +1,4 @@
-# phpBB 3.1 Extension - Normal and Special Ranks
+# phpBB 3.2 Extension - Normal and Special Ranks
 
 A simple extension that displays both the user's Special and Normal Rank.
 If user doesn't have a Special Rank, only displays the Normal Rank.

@@ -3,7 +3,7 @@
 /**
  *
  * posey: Normal and Special Ranks (nasr)
- * phpBB3.1 Extension Package
+ * phpBB3.2 Extension Package
  * @copyright (c) 2015 posey [ www.godfathertalks.com ]
  * @copyright (c) 2016 kasimi [ https://kasimi.net ]
  * @license GNU General Public License v2 [ http://opensource.org/licenses/gpl-2.0.php ]

@@ -1,11 +1,11 @@
 services:
     posey.nasr.event:
-        class: posey\nasr\event\listener
+        class: 'posey\nasr\event\listener'
         arguments:
-            - @template
-            - @config
-            - @dbal.conn
-            - %core.root_path%
-            - %core.php_ext%
+            - '@template'
+            - '@config'
+            - '@dbal.conn'
+            - '%core.root_path%'
+            - '%core.php_ext%'
         tags:
-            - { name: event.listener }
+            - { name: 'event.listener' }

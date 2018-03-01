@@ -55,8 +55,8 @@ class listener implements EventSubscriberInterface
 		template $template,
 		config $config,
 		driver_interface $db,
-		$php_ext,
-		$root_path
+		$root_path,
+		$php_ext
 	)
 	{
 		$this->template		= $template;
@@ -198,7 +198,7 @@ class listener implements EventSubscriberInterface
 		$result = $this->db->sql_query($sql);
 		while ($row = $this->db->sql_fetchrow($result))
 		{
-			$user_special_ranks[(int) $row['user_id']] = $row['rank_special'];
+			$user_special_ranks[(int) $row['user_id']] = (bool) $row['rank_special'];
 		}
 		$this->db->sql_freeresult($result);
 

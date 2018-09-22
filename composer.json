@@ -4,7 +4,7 @@
 	"description": "Normal and Special Ranks",
 	"homepage": "http://www.godfathertalks.com",
 	"version": "2.1.0",
-	"time": "2018-03-01",
+	"time": "2020-02-19",
 	"license": "GPL-2.0",
 	"authors": [
 		{
@@ -21,7 +21,7 @@
 		}
 	],
 	"require": {
-		"php": ">=5.4.0"
+		"php": ">=5.4.7"
 	},
 	"require-dev": {
 		"phpbb/epv": "dev-master"

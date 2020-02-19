@@ -189,7 +189,7 @@ class listener implements EventSubscriberInterface
 					'ON'    => 'r.rank_id = u.user_rank',
 				],
 			],
-			'WHERE'		=> $this->db->sql_in_set('u.user_id', array_map('intval', $user_ids)),
+			'WHERE'		=> $this->db->sql_in_set('u.user_id', $user_ids),
 		];
 
 		$sql = $this->db->sql_build_query('SELECT', $sql_array);

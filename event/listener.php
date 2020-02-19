@@ -15,6 +15,7 @@ namespace posey\nasr\event;
 use phpbb\config\config;
 use phpbb\db\driver\driver_interface;
 use phpbb\event\data;
+use phpbb\path_helper;
 use phpbb\template\template;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -32,11 +33,8 @@ class listener implements EventSubscriberInterface
 	/** @var driver_interface */
 	protected $db;
 
-	/** @var string */
-	protected $root_path;
-
-	/** @var string */
-	protected $php_ext;
+	/** @var path_helper */
+	protected $path_helper;
 
 	/** @var array */
 	private $users_extra_rank_template_data;
@@ -47,23 +45,20 @@ class listener implements EventSubscriberInterface
 	 * @param template			$template
 	 * @param config			$config
 	 * @param driver_interface	$db
-	 * @param string			$root_path
-	 * @param string			$php_ext
+	 * @param path_helper		$path_helper
 	 * @access public
 	 */
 	public function __construct(
 		template $template,
 		config $config,
 		driver_interface $db,
-		$root_path,
-		$php_ext
+		path_helper $path_helper
 	)
 	{
 		$this->template		= $template;
 		$this->config		= $config;
 		$this->db			= $db;
-		$this->root_path	= $root_path;
-		$this->php_ext		= $php_ext;
+		$this->path_helper	= $path_helper;
 	}
 
 	public static function getSubscribedEvents()
@@ -151,7 +146,7 @@ class listener implements EventSubscriberInterface
 	{
 		if (!function_exists('phpbb_get_user_rank'))
 		{
-			include($this->root_path . 'includes/functions_display.' . $this->php_ext);
+			include($this->path_helper->get_phpbb_root_path() . 'includes/functions_display.' . $this->path_helper->get_php_ext());
 		}
 
 		$template_data = [];

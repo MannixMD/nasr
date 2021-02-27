@@ -5,7 +5,7 @@
 	"homepage": "http://www.godfathertalks.com",
 	"version": "2.1.0",
 	"time": "2020-02-19",
-	"license": "GPL-2.0",
+	"license": "GPL-2.0-only",
 	"authors": [
 		{
 			"name": "Gijs Martens",
